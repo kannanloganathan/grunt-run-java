@@ -175,7 +175,7 @@ grunt.initConfig({
     },
     jar_task: {
       execOptions:{
-        cwd: ""/path/where/jar/command/is/run/"
+        cwd: "/path/where/jar/command/is/run/"
       },
       command: "jar",
       jarName: "my.jar",
