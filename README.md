@@ -217,6 +217,32 @@ grunt.initConfig({
 });
 ```
 
+#### Javadoc Command
+
+Run a javadoc command
+
+```js
+grunt.initConfig({
+  run_java: {
+    options: { //Default is true
+      stdout: false,
+      stderr: false,
+      stdin: false,
+      failOnError: false
+    },
+    javadov_task: {
+      execOptions:{
+        cwd: "/path/where/javac/command/is/run/"
+      }, 
+      command: "javadoc",
+      javadocOptions: { //javadoc Options
+        "d": "example/javadoc"
+      },
+      sourceFiles: ["java/file/location/*.java", "java/file/another/location/*.java"]
+    }
+  }
+});
+```
 
 #### Run command as a function
 
