@@ -64,25 +64,36 @@ module.exports = function(grunt) {
     else if (execString.indexOf("jar") !== -1){
       setOptions(data.jarOptions," -","");
       if (data.jarOptions.indexOf("f") > data.jarOptions.indexOf("m")){
-        if (data.jarName){
-          execString += " " + data.jarName;
-        }
         if (data.manifestName){
           execString += " " + data.manifestName;
+        }
+        if (data.jarName){
+          execString += " " + data.jarName;
         }
       }
       else{
-        if (data.manifestName){
-          execString += " " + data.manifestName;
-        }
         if (data.jarName){
           execString += " " + data.jarName;
+        }
+        if (data.manifestName){
+          execString += " " + data.manifestName;
         }
       }
       if (data.dir){
         execString += " -C " + data.dir;
       }
       setOptions(data.files," "," ");
+    }
+    // if javadoc
+    else if (execString.indexOf("javadoc") !== -1){
+      if (data.javadocOptions){
+        for (prop in data.javadocOptions){
+          execString += " -" + prop;
+          setOptions(data.javadocOptions[prop]," ",":");    
+        }
+      }
+      
+      setOptions(data.sourceFiles," "," ");
     }
 
     //if java or javac
